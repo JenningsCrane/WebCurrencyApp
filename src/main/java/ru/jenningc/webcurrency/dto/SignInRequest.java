@@ -3,10 +3,14 @@ package ru.jenningc.webcurrency.dto;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @Schema(description = "Запрос на аутентификацию")
+@NoArgsConstructor
+@AllArgsConstructor
 public class SignInRequest {
 
     @Schema(description = "Имя пользователя", example = "Jon")
@@ -19,3 +23,22 @@ public class SignInRequest {
     @NotBlank(message = "Пароль не может быть пустым")
     private String password;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

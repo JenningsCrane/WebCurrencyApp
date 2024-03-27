@@ -43,7 +43,7 @@ public class JwtService {
         if (userDetails instanceof User customUserDetails) {
             claims.put("id", customUserDetails.getId());
             claims.put("email", customUserDetails.getEmail());
-            claims.put("phoneNumber", customUserDetails.getPhoneNumber());
+//            claims.put("phoneNumber", customUserDetails.getPhoneNumber());
             claims.put("role", customUserDetails.getRole());
         }
         return generateToken(claims, userDetails);
