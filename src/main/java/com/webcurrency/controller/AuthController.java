@@ -1,5 +1,9 @@
-package ru.jenningc.webcurrency.controller;
+package com.webcurrency.controller;
 
+import com.webcurrency.dto.JwtAuthenticationResponse;
+import com.webcurrency.dto.SignInRequest;
+import com.webcurrency.dto.SignUpRequest;
+import com.webcurrency.service.AuthenticationService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
@@ -8,10 +12,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import ru.jenningc.webcurrency.dto.JwtAuthenticationResponse;
-import ru.jenningc.webcurrency.dto.SignInRequest;
-import ru.jenningc.webcurrency.dto.SignUpRequest;
-import ru.jenningc.webcurrency.service.AuthenticationService;
 
 @RestController
 @RequestMapping("/auth")

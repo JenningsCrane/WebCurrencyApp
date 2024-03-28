@@ -1,8 +1,8 @@
-package ru.jenningc.webcurrency.repository;
+package com.webcurrency.repository;
 
+import com.webcurrency.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-import ru.jenningc.webcurrency.model.User;
 
 import java.util.Optional;
 

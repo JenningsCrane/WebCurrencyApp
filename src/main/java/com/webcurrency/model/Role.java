@@ -1,4 +1,4 @@
-package ru.jenningc.webcurrency.model;
+package com.webcurrency.model;
 
 public enum Role {
     ROLE_USER,

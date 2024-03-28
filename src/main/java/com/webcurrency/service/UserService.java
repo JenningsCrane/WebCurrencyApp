@@ -1,13 +1,13 @@
-package ru.jenningc.webcurrency.service;
+package com.webcurrency.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-import ru.jenningc.webcurrency.model.Role;
-import ru.jenningc.webcurrency.model.User;
-import ru.jenningc.webcurrency.repository.UserRepository;
+import com.webcurrency.model.Role;
+import com.webcurrency.model.User;
+import com.webcurrency.repository.UserRepository;
 
 @Service
 @RequiredArgsConstructor
@@ -85,5 +85,10 @@ public class UserService {
         var user = getCurrentUser();
         user.setRole(Role.ROLE_ADMIN);
         save(user);
+    }
+
+    public User getById(Long id){
+        return repository.findById(id)
+                .orElseThrow(() -> new UsernameNotFoundException("Пользователь не найден"));
     }
 }

@@ -1,6 +1,7 @@
-package ru.jenningc.webcurrency.service;
+package com.webcurrency.service;
 
 
+import com.webcurrency.model.User;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -9,7 +10,6 @@ import io.jsonwebtoken.security.Keys;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
-import ru.jenningc.webcurrency.model.User;
 
 import java.security.Key;
 import java.util.Date;

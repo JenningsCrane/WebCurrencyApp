@@ -1,4 +1,4 @@
-package ru.jenningc.webcurrency.model;
+package com.webcurrency.model;
 
 import jakarta.persistence.*;
 import lombok.*;
