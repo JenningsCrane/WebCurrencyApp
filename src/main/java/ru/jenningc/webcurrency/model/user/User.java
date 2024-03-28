@@ -1,10 +1,11 @@
-package ru.jenningc.webcurrency.model;
+package ru.jenningc.webcurrency.model.user;
 
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import ru.jenningc.webcurrency.model.account.Account;
 
 import java.util.Collection;
 import java.util.List;

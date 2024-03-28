@@ -5,8 +5,8 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-import ru.jenningc.webcurrency.model.Role;
-import ru.jenningc.webcurrency.model.User;
+import ru.jenningc.webcurrency.model.user.Role;
+import ru.jenningc.webcurrency.model.user.User;
 import ru.jenningc.webcurrency.repository.UserRepository;
 
 @Service

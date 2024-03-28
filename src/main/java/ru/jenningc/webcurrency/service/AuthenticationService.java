@@ -9,8 +9,8 @@ import org.springframework.stereotype.Service;
 import ru.jenningc.webcurrency.dto.JwtAuthenticationResponse;
 import ru.jenningc.webcurrency.dto.SignInRequest;
 import ru.jenningc.webcurrency.dto.SignUpRequest;
-import ru.jenningc.webcurrency.model.Role;
-import ru.jenningc.webcurrency.model.User;
+import ru.jenningc.webcurrency.model.user.Role;
+import ru.jenningc.webcurrency.model.user.User;
 
 @Service
 @RequiredArgsConstructor

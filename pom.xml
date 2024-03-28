@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>ru.jenningc</groupId>
-	<artifactId>webCurrency</artifactId>
+	<artifactId>webcurrency</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>webCurrency</name>
+	<name>webcurrency</name>
 	<description>Currency exchange web</description>
 	<properties>
 		<java.version>17</java.version>
