@@ -8,7 +8,7 @@
 		<version>3.2.4</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>ru.jenningc</groupId>
+	<groupId>com.webcurrency</groupId>
 	<artifactId>webcurrency</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>webcurrency</name>
@@ -80,6 +80,11 @@
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.modelmapper</groupId>
+			<artifactId>modelmapper</artifactId>
+			<version>3.1.1</version>
 		</dependency>
 	</dependencies>
 

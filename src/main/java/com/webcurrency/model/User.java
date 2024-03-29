@@ -1,15 +1,11 @@
-<<<<<<<< HEAD:src/main/java/ru/jenningc/webcurrency/model/user/User.java
-package ru.jenningc.webcurrency.model.user;
-========
 package com.webcurrency.model;
->>>>>>>> develop/dariogla:src/main/java/com/webcurrency/model/User.java
 
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import ru.jenningc.webcurrency.model.account.Account;
+import com.webcurrency.model.Account;
 
 import java.util.Collection;
 import java.util.List;
