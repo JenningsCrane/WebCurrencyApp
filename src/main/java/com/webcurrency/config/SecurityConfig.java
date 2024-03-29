@@ -1,6 +1,6 @@
 package com.webcurrency.config;
 
-import com.webcurrency.service.UserService;
+import com.webcurrency.services.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

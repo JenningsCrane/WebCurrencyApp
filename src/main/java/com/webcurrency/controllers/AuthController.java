@@ -1,9 +1,9 @@
-package com.webcurrency.controller;
+package com.webcurrency.controllers;
 
 import com.webcurrency.dto.JwtAuthenticationResponse;
 import com.webcurrency.dto.SignInRequest;
 import com.webcurrency.dto.SignUpRequest;
-import com.webcurrency.service.AuthenticationService;
+import com.webcurrency.services.AuthenticationService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;

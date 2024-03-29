@@ -1,4 +1,4 @@
-package com.webcurrency.model.user;
+package com.webcurrency.models.user;
 
 
 public enum Role {

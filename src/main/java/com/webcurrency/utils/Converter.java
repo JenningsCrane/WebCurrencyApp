@@ -1,10 +1,12 @@
 package com.webcurrency.utils;
 
 import com.webcurrency.dto.AccountResponse;
+import com.webcurrency.dto.CurrencyRateResponse;
 import com.webcurrency.dto.UserResponse;
-import com.webcurrency.model.account.Account;
-import com.webcurrency.model.user.User;
-import com.webcurrency.service.UserService;
+import com.webcurrency.models.account.Account;
+import com.webcurrency.models.account.CurrencyRate;
+import com.webcurrency.models.user.User;
+import com.webcurrency.services.UserService;
 import org.modelmapper.ModelMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,12 +18,10 @@ import java.util.List;
 @RequiredArgsConstructor
 public class Converter {
     private ModelMapper modelMapper;
-    private UserService userService;
 
     @Autowired
     public Converter(ModelMapper modelMapper, UserService userService) {
         this.modelMapper = modelMapper;
-        this.userService = userService;
     }
 
     public UserResponse convertToUserResponse(User user) {
@@ -35,6 +35,10 @@ public class Converter {
 
     public AccountResponse convertToAccountResponse(Account account) {
         return modelMapper.map(account, AccountResponse.class);
+    }
+
+    public CurrencyRateResponse convertToCurrencyRateResponse(CurrencyRate currencyRate) {
+        return modelMapper.map(currencyRate, CurrencyRateResponse.class);
     }
 
 }

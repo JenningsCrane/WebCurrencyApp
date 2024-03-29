@@ -1,7 +1,7 @@
-package com.webcurrency.parser;
+package com.webcurrency.utils;
 
-import com.webcurrency.model.account.CurrencyRate;
-import com.webcurrency.model.account.CurrencyType;
+import com.webcurrency.models.account.CurrencyRate;
+import com.webcurrency.models.account.CurrencyType;
 import org.springframework.stereotype.Component;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -10,6 +10,7 @@ import org.w3c.dom.NodeList;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import java.io.InputStream;
+import java.math.BigDecimal;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.text.ParseException;
@@ -19,7 +20,7 @@ import java.util.Date;
 import java.util.List;
 
 @Component
-public class XMLParser {
+public class XmlParser {
 
     public List<CurrencyRate> parseCurrencyRates(String url) throws ParseException {
         List<CurrencyRate> currencyRates = new ArrayList<>();
@@ -38,10 +39,10 @@ public class XMLParser {
 
             for (int i = 0; i < recordList.getLength(); i++) {
                 Element record = (Element) recordList.item(i);
-                String dateString = record.getAttribute("Date");
+                String dateString = record.getAttribute("Date").replace(".", "-");
                 String currencyType = record.getAttribute("Id");
-                Date date = new SimpleDateFormat("dd.MM.yyyy").parse(dateString);
-                double value = Double.parseDouble(record.getElementsByTagName("Value").item(0).getTextContent().replace(",", "."));
+                Date date = new SimpleDateFormat("dd-MM-yyyy").parse(dateString);
+                BigDecimal value = new BigDecimal(record.getElementsByTagName("Value").item(0).getTextContent().replace(",", "."));
                 CurrencyRate currencyRate = CurrencyRate.builder()
                         .isAI(false)
                         .currency(CurrencyType.fromString(currencyType))

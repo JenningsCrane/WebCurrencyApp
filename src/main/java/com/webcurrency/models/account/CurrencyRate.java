@@ -1,8 +1,11 @@
-package com.webcurrency.model.account;
+package com.webcurrency.models.account;
 
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Getter
@@ -18,7 +21,7 @@ public class CurrencyRate {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "AI")
+    @Column(name = "is_AI")
     private boolean isAI;
 
     @Enumerated(EnumType.STRING)
@@ -29,6 +32,5 @@ public class CurrencyRate {
     private Date date;
 
     @Column(name = "value")
-    private double value;
-
+    private BigDecimal value;
 }

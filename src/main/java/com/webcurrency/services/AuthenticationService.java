@@ -1,10 +1,10 @@
-package com.webcurrency.service;
+package com.webcurrency.services;
 
 import com.webcurrency.dto.JwtAuthenticationResponse;
 import com.webcurrency.dto.SignInRequest;
 import com.webcurrency.dto.SignUpRequest;
-import com.webcurrency.model.user.Role;
-import com.webcurrency.model.user.User;
+import com.webcurrency.models.user.Role;
+import com.webcurrency.models.user.User;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -28,7 +28,7 @@ public class AuthenticationService {
      */
     public JwtAuthenticationResponse signUp(@Valid SignUpRequest request) {
 
-        var user = User.builder()
+        User user = User.builder()
                 .username(request.getUsername())
                 .email(request.getEmail())
                 .phoneNumber(request.getPhoneNumber())

@@ -1,8 +1,11 @@
-package com.webcurrency.model.account;
+package com.webcurrency.models.account;
 
-import com.webcurrency.model.user.User;
+import com.webcurrency.models.user.User;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.DecimalMin;
 import lombok.*;
+
+import java.math.BigDecimal;
 
 
 @Getter
@@ -26,5 +29,6 @@ public class Account {
     private CurrencyType currency;
 
     @Column(name = "balance", nullable = false)
-    private double balance;
+    @DecimalMin(value = "0.0000", inclusive = true, message = "Balance must be greater than or equal to 0")
+    private BigDecimal balance;
 }

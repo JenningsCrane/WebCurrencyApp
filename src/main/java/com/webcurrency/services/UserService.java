@@ -1,18 +1,25 @@
-package com.webcurrency.service;
+package com.webcurrency.services;
 
+import com.webcurrency.exceptions.UserNotCreatedException;
+import com.webcurrency.models.account.Account;
+import com.webcurrency.repositories.AccountRepository;
+import com.webcurrency.utils.AccountCreator;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-import com.webcurrency.model.user.Role;
-import com.webcurrency.model.user.User;
-import com.webcurrency.repository.UserRepository;
+import com.webcurrency.models.user.Role;
+import com.webcurrency.models.user.User;
+import com.webcurrency.repositories.UserRepository;
+
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
 public class UserService {
     private final UserRepository repository;
+    private final AccountRepository accountRepository;
 
     /**
      * Сохранение пользователя
@@ -20,7 +27,7 @@ public class UserService {
      * @return сохраненный пользователь
      */
     public User save(User user) {
-        return repository.save(user);
+        return repository.saveAndFlush(user);
     }
 
 
@@ -29,17 +36,24 @@ public class UserService {
      *
      * @return созданный пользователь
      */
-    public User create(User user) {
-        if (repository.existsByUsername(user.getUsername())) {
-            throw new RuntimeException("Пользователь с таким именем уже существует");
-        }
-
+    public void create(User user) {
         if (repository.existsByEmail(user.getEmail())) {
-            throw new RuntimeException("Пользователь с таким email уже существует");
+            throw new UserNotCreatedException("Пользователь с таким email уже существует");
         }
 
-        return save(user);
+        if (repository.existsByPhoneNumber(user.getPhoneNumber())) {
+            throw new UserNotCreatedException("Пользователь с таким номером телефона уже существует");
+        }
+
+        User savedUser = save(user);
+        createAccountsForNewUser(savedUser);
     }
+
+    private void createAccountsForNewUser(User user) {
+        List<Account> accounts = AccountCreator.createAccountsForNewUser(user);
+        accountRepository.saveAll(accounts);
+    }
+
 
     /**
      * Получение пользователя по имени пользователя
@@ -69,8 +83,7 @@ public class UserService {
      * @return текущий пользователь
      */
     public User getCurrentUser() {
-        // Получение имени пользователя из контекста Spring Security
-        var username = SecurityContextHolder.getContext().getAuthentication().getName();
+        String username = SecurityContextHolder.getContext().getAuthentication().getName();
         return getByUsername(username);
     }
 
@@ -82,12 +95,12 @@ public class UserService {
      */
     @Deprecated
     public void getAdmin() {
-        var user = getCurrentUser();
+        User user = getCurrentUser();
         user.setRole(Role.ROLE_ADMIN);
         save(user);
     }
 
-    public User getById(Long id){
+    public User getById(Long id) {
         return repository.findById(id)
                 .orElseThrow(() -> new UsernameNotFoundException("Пользователь не найден"));
     }

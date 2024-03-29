@@ -1,7 +1,7 @@
-package com.webcurrency.controller;
+package com.webcurrency.controllers;
 
 import com.webcurrency.dto.UserResponse;
-import com.webcurrency.service.UserService;
+import com.webcurrency.services.UserService;
 import com.webcurrency.utils.Converter;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -18,7 +18,7 @@ public class ProfileController {
 
     @GetMapping("/{id}")
     @Operation(summary = "Получение данных пользователя")
-    public UserResponse getData(@PathVariable("id") Long id) {
+    public UserResponse getUserData(@PathVariable("id") Long id) {
         return converter.convertToUserResponse(userService.getById(id));
     }
 }
