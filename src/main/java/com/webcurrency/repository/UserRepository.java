@@ -1,6 +1,6 @@
 package com.webcurrency.repository;
 
-import com.webcurrency.model.User;
+import com.webcurrency.model.user.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

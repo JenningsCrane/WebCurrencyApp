@@ -1,8 +1,9 @@
-package com.webcurrency.model;
+package com.webcurrency.model.account;
 
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.Date;
 
 @Getter
 @Setter
@@ -10,20 +11,24 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "accounts")
-public class Account {
+@Table(name = "currency_rates")
+public class CurrencyRate {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id", nullable = false)
-    private User user;
+    @Column(name = "AI")
+    private boolean isAI;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "currency", nullable = false)
     private CurrencyType currency;
 
-    @Column(name = "balance", nullable = false)
-    private double balance;
+    @Column(name = "date")
+    private Date date;
+
+    @Column(name = "value")
+    private double value;
+
 }

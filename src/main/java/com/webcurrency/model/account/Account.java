@@ -1,10 +1,9 @@
-package ru.jenningc.webcurrency.model.currency;
+package com.webcurrency.model.account;
 
+import com.webcurrency.model.user.User;
 import jakarta.persistence.*;
 import lombok.*;
-import ru.jenningc.webcurrency.model.account.CurrencyType;
 
-import java.util.Date;
 
 @Getter
 @Setter
@@ -12,21 +11,20 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "currency_rates")
-public class CurrencyRate {
-
+@Table(name = "accounts")
+public class Account {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "currency", nullable = false)
     private CurrencyType currency;
 
-    @Column(name = "date")
-    private Date date;
-
-    @Column(name = "value")
-    private double value;
-
+    @Column(name = "balance", nullable = false)
+    private double balance;
 }

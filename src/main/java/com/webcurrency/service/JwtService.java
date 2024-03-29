@@ -1,7 +1,7 @@
 package com.webcurrency.service;
 
 
-import com.webcurrency.model.User;
+import com.webcurrency.model.user.User;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;

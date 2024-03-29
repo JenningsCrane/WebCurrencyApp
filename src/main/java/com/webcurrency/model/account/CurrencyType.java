@@ -1,4 +1,4 @@
-package ru.jenningc.webcurrency.model.account;
+package com.webcurrency.model.account;
 
 public enum CurrencyType {
     DIRHAM,

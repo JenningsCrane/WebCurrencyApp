@@ -2,8 +2,8 @@ package com.webcurrency.utils;
 
 import com.webcurrency.dto.AccountResponse;
 import com.webcurrency.dto.UserResponse;
-import com.webcurrency.model.Account;
-import com.webcurrency.model.User;
+import com.webcurrency.model.account.Account;
+import com.webcurrency.model.user.User;
 import com.webcurrency.service.UserService;
 import org.modelmapper.ModelMapper;
 import lombok.RequiredArgsConstructor;

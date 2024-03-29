@@ -1,11 +1,11 @@
-package com.webcurrency.model;
+package com.webcurrency.model.user;
 
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import com.webcurrency.model.Account;
+import com.webcurrency.model.account.Account;
 
 import java.util.Collection;
 import java.util.List;
