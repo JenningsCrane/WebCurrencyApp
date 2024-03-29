@@ -1,4 +1,8 @@
+<<<<<<<< HEAD:src/main/java/ru/jenningc/webcurrency/model/user/User.java
 package ru.jenningc.webcurrency.model.user;
+========
+package com.webcurrency.model;
+>>>>>>>> develop/dariogla:src/main/java/com/webcurrency/model/User.java
 
 import jakarta.persistence.*;
 import lombok.*;

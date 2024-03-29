@@ -1,16 +1,16 @@
-package ru.jenningc.webcurrency.service;
+package com.webcurrency.service;
 
+import com.webcurrency.dto.JwtAuthenticationResponse;
+import com.webcurrency.dto.SignInRequest;
+import com.webcurrency.dto.SignUpRequest;
+import com.webcurrency.model.Role;
+import com.webcurrency.model.User;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import ru.jenningc.webcurrency.dto.JwtAuthenticationResponse;
-import ru.jenningc.webcurrency.dto.SignInRequest;
-import ru.jenningc.webcurrency.dto.SignUpRequest;
-import ru.jenningc.webcurrency.model.user.Role;
-import ru.jenningc.webcurrency.model.user.User;
 
 @Service
 @RequiredArgsConstructor
@@ -31,6 +31,7 @@ public class AuthenticationService {
         var user = User.builder()
                 .username(request.getUsername())
                 .email(request.getEmail())
+                .phoneNumber(request.getPhoneNumber())
                 .password(passwordEncoder.encode(request.getPassword()))
                 .role(Role.ROLE_USER)
                 .build();

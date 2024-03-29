@@ -1,4 +1,4 @@
-package ru.jenningc.webcurrency;
+package com.webcurrency;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

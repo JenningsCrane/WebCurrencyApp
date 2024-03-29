@@ -1,4 +1,4 @@
-package ru.jenningc.webcurrency.config;
+package com.webcurrency.config;
 
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
@@ -14,8 +14,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
-import ru.jenningc.webcurrency.service.JwtService;
-import ru.jenningc.webcurrency.service.UserService;
+import com.webcurrency.service.JwtService;
+import com.webcurrency.service.UserService;
 
 import java.io.IOException;
 
