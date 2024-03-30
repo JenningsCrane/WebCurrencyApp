@@ -14,10 +14,10 @@ import static com.webcurrency.models.account.CurrencyType.AED;
 import static com.webcurrency.models.account.CurrencyType.CNY;
 
 @RestController
-@RequestMapping("currencies")
+@RequestMapping("graph")
 @RequiredArgsConstructor
-@Tag(name = "Курс валют")
-public class CurrencyController {
+@Tag(name = "Графики курса валют")
+public class GraphController {
     private final CurrencyRateService rateService;
     private final Converter converter;
 
