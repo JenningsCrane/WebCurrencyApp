@@ -4,6 +4,7 @@ import com.webcurrency.dto.TransactionResponse;
 import com.webcurrency.models.account.CurrencyType;
 import com.webcurrency.services.TransactionService;
 import com.webcurrency.utils.Converter;
+import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -22,6 +23,7 @@ public class TransactionController {
     private final Converter converter;
 
     @GetMapping("/{userId}")
+    @Operation(summary = "Получение всех транзакций пользователя")
     public List<TransactionResponse> getAllTransactions(@PathVariable Long userId) {
         return transactionService.findAllByUserId(userId).stream()
                 .map(converter::convertToTransactionResponse)
@@ -29,6 +31,7 @@ public class TransactionController {
     }
 
     @PostMapping("/buy")
+    @Operation(summary = "Покупка валюты")
     public ResponseEntity<HttpStatus> buyCurrency(@RequestParam("userId") Long userId,
                                                   @RequestParam("fromCurrency") CurrencyType fromCurrency,
                                                   @RequestParam("toCurrency") CurrencyType toCurrency,
@@ -38,6 +41,7 @@ public class TransactionController {
     }
 
     @PostMapping("/sell")
+    @Operation(summary = "Продажа валюты")
     public ResponseEntity<HttpStatus> sellCurrency(@RequestParam("userId") Long userId,
                                                    @RequestParam("fromCurrency") CurrencyType fromCurrency,
                                                    @RequestParam("toCurrency") CurrencyType toCurrency,

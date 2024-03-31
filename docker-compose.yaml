@@ -1,0 +1,33 @@
+version: '3'
+
+services:
+  # Сервис для вашего Spring Boot приложения
+  web:
+    build: .
+    networks:
+      local_network:
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/webcurrencydb?autoReconnect=true
+      - SPRING_DATASOURCE_USERNAME=admin
+      - SPRING_DATASOURCE_PASSWORD=admin
+    depends_on:
+      - postgres  # Зависимость от сервиса PostgreSQL
+    restart: always
+
+  # Сервис для PostgreSQL
+  postgres:
+    image: postgres:latest
+    networks:
+      local_network:
+    environment:
+      POSTGRES_DB: "webcurrencydb"
+      POSTGRES_USER: "admin"
+      POSTGRES_PASSWORD: "admin"
+      PGDATA: "/var/lib/postgresql/data/pgdata"
+    ports:
+      - "5432:5432"
+
+networks:
+  local_network:

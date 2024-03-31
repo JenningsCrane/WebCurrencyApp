@@ -3,6 +3,7 @@ package com.webcurrency.controllers;
 import com.webcurrency.dto.CurrencyRateResponse;
 import com.webcurrency.services.CurrencyRateService;
 import com.webcurrency.utils.Converter;
+import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -20,6 +21,7 @@ public class GraphController {
     private final CurrencyRateService rateService;
     private final Converter converter;
 
+    @Operation(summary = "Данные для отрисовки графика по юаню")
     @GetMapping("/rub-cny")
     public List<CurrencyRateResponse> getCnyData(@RequestParam(value = "start_date", required = false) String startDate,
                                                  @RequestParam(value = "end_date", required = false) String endDate) {
@@ -28,7 +30,7 @@ public class GraphController {
                 .toList();
     }
 
-
+    @Operation(summary = "Данные для отрисовки графика по дирхаму")
     @GetMapping("/rub-aed")
     public List<CurrencyRateResponse> getAedData(@RequestParam(value = "start_date", required = false) String startDate,
                                                  @RequestParam(value = "end_date", required = false) String endDate) {
