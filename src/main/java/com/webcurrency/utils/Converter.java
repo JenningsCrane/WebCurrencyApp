@@ -23,7 +23,7 @@ public class Converter {
     private ModelMapper modelMapper;
 
     @Autowired
-    public Converter(ModelMapper modelMapper, UserService userService) {
+    public Converter(ModelMapper modelMapper) {
         this.modelMapper = modelMapper;
     }
 
