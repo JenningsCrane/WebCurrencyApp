@@ -1,4 +1,4 @@
-package com.webcurrency.models.account;
+package com.webcurrency.models.currency;
 
 import com.webcurrency.exceptions.UnsupportedCurrencyType;
 

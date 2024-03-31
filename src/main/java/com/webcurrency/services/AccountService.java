@@ -3,7 +3,7 @@ package com.webcurrency.services;
 import com.webcurrency.exceptions.AccountNotFoundException;
 import com.webcurrency.exceptions.LowBalanceException;
 import com.webcurrency.models.account.Account;
-import com.webcurrency.models.account.CurrencyType;
+import com.webcurrency.models.currency.CurrencyType;
 import com.webcurrency.repositories.AccountRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

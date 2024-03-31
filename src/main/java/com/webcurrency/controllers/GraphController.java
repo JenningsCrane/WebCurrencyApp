@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-import static com.webcurrency.models.account.CurrencyType.AED;
-import static com.webcurrency.models.account.CurrencyType.CNY;
+import static com.webcurrency.models.currency.CurrencyType.AED;
+import static com.webcurrency.models.currency.CurrencyType.CNY;
 
 @RestController
 @RequestMapping("graph")
@@ -38,8 +38,4 @@ public class GraphController {
                 .map(converter::convertToCurrencyRateResponse)
                 .toList();
     }
-
-
-    // TODO добавь пост запросы на создание заявки
-    // TODO добавь контроллер для отображения истории операций
 }

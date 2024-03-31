@@ -1,7 +1,7 @@
 package com.webcurrency.utils;
 
 import com.webcurrency.models.account.Account;
-import com.webcurrency.models.account.CurrencyType;
+import com.webcurrency.models.currency.CurrencyType;
 import com.webcurrency.models.user.User;
 
 import java.math.BigDecimal;

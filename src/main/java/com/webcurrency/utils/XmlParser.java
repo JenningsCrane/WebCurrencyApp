@@ -1,7 +1,7 @@
 package com.webcurrency.utils;
 
-import com.webcurrency.models.account.CurrencyRate;
-import com.webcurrency.models.account.CurrencyType;
+import com.webcurrency.models.currency.CurrencyRate;
+import com.webcurrency.models.currency.CurrencyType;
 import org.springframework.stereotype.Component;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;

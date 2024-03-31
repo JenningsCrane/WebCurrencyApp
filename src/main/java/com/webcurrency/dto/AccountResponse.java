@@ -1,6 +1,6 @@
 package com.webcurrency.dto;
 
-import com.webcurrency.models.account.CurrencyType;
+import com.webcurrency.models.currency.CurrencyType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

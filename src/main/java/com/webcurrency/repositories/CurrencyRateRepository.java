@@ -1,14 +1,11 @@
 package com.webcurrency.repositories;
 
-import com.webcurrency.models.account.CurrencyRate;
-import com.webcurrency.models.account.CurrencyType;
+import com.webcurrency.models.currency.CurrencyRate;
+import com.webcurrency.models.currency.CurrencyType;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
-import java.math.BigDecimal;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;

@@ -1,5 +1,6 @@
 package com.webcurrency.models.account;
 
+import com.webcurrency.models.currency.CurrencyType;
 import com.webcurrency.models.user.User;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.DecimalMin;

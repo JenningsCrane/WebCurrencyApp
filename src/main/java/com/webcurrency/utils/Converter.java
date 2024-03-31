@@ -5,8 +5,8 @@ import com.webcurrency.dto.CurrencyRateResponse;
 import com.webcurrency.dto.TransactionResponse;
 import com.webcurrency.dto.UserResponse;
 import com.webcurrency.models.account.Account;
-import com.webcurrency.models.account.CurrencyRate;
-import com.webcurrency.models.account.CurrencyType;
+import com.webcurrency.models.currency.CurrencyRate;
+import com.webcurrency.models.currency.CurrencyType;
 import com.webcurrency.models.account.Transaction;
 import com.webcurrency.models.user.User;
 import com.webcurrency.services.UserService;
@@ -72,17 +72,6 @@ public class Converter {
             return "BUY";
         } else {
             return "SELL";
-        }
-    }
-
-
-    private String getOperationType(Transaction transaction) {
-        CurrencyType currencyType = transaction.getReceiverAccount().getCurrencyType();
-
-        if (currencyType.equals(CurrencyType.RUB)) {
-            return "SELL";
-        } else {
-            return "BUY";
         }
     }
 

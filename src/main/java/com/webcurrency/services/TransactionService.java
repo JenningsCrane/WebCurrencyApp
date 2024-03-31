@@ -1,8 +1,7 @@
 package com.webcurrency.services;
 
-import com.webcurrency.dto.TransactionResponse;
 import com.webcurrency.models.account.Account;
-import com.webcurrency.models.account.CurrencyType;
+import com.webcurrency.models.currency.CurrencyType;
 import com.webcurrency.models.account.Transaction;
 import com.webcurrency.repositories.TransactionRepository;
 import lombok.RequiredArgsConstructor;

@@ -1,8 +1,8 @@
 package com.webcurrency.services;
 
 import com.webcurrency.exceptions.CurrencyValueNotFoundException;
-import com.webcurrency.models.account.CurrencyRate;
-import com.webcurrency.models.account.CurrencyType;
+import com.webcurrency.models.currency.CurrencyRate;
+import com.webcurrency.models.currency.CurrencyType;
 import com.webcurrency.utils.XmlParser;
 import com.webcurrency.repositories.CurrencyRateRepository;
 import lombok.RequiredArgsConstructor;
@@ -19,7 +19,6 @@ import java.util.List;
 public class CurrencyRateService {
     private final XmlParser xmlParser;
     private final CurrencyRateRepository currencyRateRepository;
-    // TODO переделать этот методы и работу с датами
 
     public BigDecimal getCurrencyValue(CurrencyType currencyType) {
         return getLatestCurrencyRateByType(currencyType).getValue();

@@ -1,7 +1,7 @@
 package com.webcurrency.controllers;
 
 import com.webcurrency.dto.TransactionResponse;
-import com.webcurrency.models.account.CurrencyType;
+import com.webcurrency.models.currency.CurrencyType;
 import com.webcurrency.services.TransactionService;
 import com.webcurrency.utils.Converter;
 import io.swagger.v3.oas.annotations.Operation;

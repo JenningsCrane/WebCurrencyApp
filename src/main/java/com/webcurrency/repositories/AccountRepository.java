@@ -1,7 +1,7 @@
 package com.webcurrency.repositories;
 
 import com.webcurrency.models.account.Account;
-import com.webcurrency.models.account.CurrencyType;
+import com.webcurrency.models.currency.CurrencyType;
 import com.webcurrency.models.user.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
