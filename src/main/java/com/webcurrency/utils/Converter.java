@@ -2,9 +2,12 @@ package com.webcurrency.utils;
 
 import com.webcurrency.dto.AccountResponse;
 import com.webcurrency.dto.CurrencyRateResponse;
+import com.webcurrency.dto.TransactionResponse;
 import com.webcurrency.dto.UserResponse;
 import com.webcurrency.models.account.Account;
 import com.webcurrency.models.account.CurrencyRate;
+import com.webcurrency.models.account.CurrencyType;
+import com.webcurrency.models.account.Transaction;
 import com.webcurrency.models.user.User;
 import com.webcurrency.services.UserService;
 import org.modelmapper.ModelMapper;
@@ -39,6 +42,48 @@ public class Converter {
 
     public CurrencyRateResponse convertToCurrencyRateResponse(CurrencyRate currencyRate) {
         return modelMapper.map(currencyRate, CurrencyRateResponse.class);
+    }
+
+    public TransactionResponse convertToTransactionResponse(Transaction transaction) {
+        TransactionResponse transactionResponse = modelMapper.map(transaction, TransactionResponse.class);
+
+        CurrencyType receiverCurrencyType = transaction.getReceiverAccount().getCurrencyType();
+        CurrencyType senderCurrencyType = transaction.getSenderAccount().getCurrencyType();
+
+        String currencyType = determineCurrencyType(receiverCurrencyType, senderCurrencyType);
+        transactionResponse.setCurrencyType(currencyType);
+        transactionResponse.setOperationType(determineOperationType(transaction));
+
+        return transactionResponse;
+    }
+
+    private String determineCurrencyType(CurrencyType receiverCurrencyType, CurrencyType senderCurrencyType) {
+        if (receiverCurrencyType.equals(CurrencyType.RUB)) {
+            return senderCurrencyType.toString();
+        } else {
+            return receiverCurrencyType.toString();
+        }
+    }
+
+    private String determineOperationType(Transaction transaction) {
+        CurrencyType receiverCurrencyType = transaction.getReceiverAccount().getCurrencyType();
+
+        if (!receiverCurrencyType.equals(CurrencyType.RUB)) {
+            return "BUY";
+        } else {
+            return "SELL";
+        }
+    }
+
+
+    private String getOperationType(Transaction transaction) {
+        CurrencyType currencyType = transaction.getReceiverAccount().getCurrencyType();
+
+        if (currencyType.equals(CurrencyType.RUB)) {
+            return "SELL";
+        } else {
+            return "BUY";
+        }
     }
 
 }

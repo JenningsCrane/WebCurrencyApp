@@ -7,7 +7,6 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
-import java.text.ParseException;
 import java.util.List;
 
 import static com.webcurrency.models.account.CurrencyType.AED;
@@ -22,21 +21,22 @@ public class GraphController {
     private final Converter converter;
 
     @GetMapping("/rub-cny")
-    public List<CurrencyRateResponse> getCnyData(@RequestParam("start_date") String startDate,
-                                                 @RequestParam("end_date") String endDate) throws ParseException {
-        return rateService.updateCurrencyRatesIfNeeded(startDate, endDate, CNY.getCode()).stream()
+    public List<CurrencyRateResponse> getCnyData(@RequestParam(value = "start_date", required = false) String startDate,
+                                                 @RequestParam(value = "end_date", required = false) String endDate) {
+        return rateService.updateCurrencyRatesIfNeeded(startDate, endDate, CNY).stream()
                 .map(converter::convertToCurrencyRateResponse)
                 .toList();
     }
 
 
     @GetMapping("/rub-aed")
-    public List<CurrencyRateResponse> getAedData(@RequestParam("start_date") String startDate,
-                                                 @RequestParam("end_date") String endDate) throws ParseException {
-        return rateService.updateCurrencyRatesIfNeeded(startDate, endDate, AED.getCode()).stream()
+    public List<CurrencyRateResponse> getAedData(@RequestParam(value = "start_date", required = false) String startDate,
+                                                 @RequestParam(value = "end_date", required = false) String endDate) {
+        return rateService.updateCurrencyRatesIfNeeded(startDate, endDate, AED).stream()
                 .map(converter::convertToCurrencyRateResponse)
                 .toList();
     }
+
 
     // TODO добавь пост запросы на создание заявки
     // TODO добавь контроллер для отображения истории операций

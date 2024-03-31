@@ -19,10 +19,10 @@ public class AccountCreator {
         return accounts;
     }
 
-    private static Account createAccount(User user, CurrencyType currency, BigDecimal initialBalance) {
+    private static Account createAccount(User user, CurrencyType currencyType, BigDecimal initialBalance) {
         return Account.builder()
                 .user(user)
-                .currency(currency)
+                .currencyType(currencyType)
                 .balance(initialBalance)
                 .build();
     }

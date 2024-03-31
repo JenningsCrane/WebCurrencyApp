@@ -26,7 +26,7 @@ public class Account {
 
     @Enumerated(EnumType.STRING)
     @Column(name = "currency", nullable = false)
-    private CurrencyType currency;
+    private CurrencyType currencyType;
 
     @Column(name = "balance", nullable = false)
     @DecimalMin(value = "0.0000", inclusive = true, message = "Balance must be greater than or equal to 0")
