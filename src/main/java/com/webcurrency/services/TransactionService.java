@@ -17,7 +17,7 @@ import java.util.List;
 public class TransactionService {
     private final TransactionRepository transactionRepository;
     private final AccountService accountService;
-    private final CurrencyRateService currencyRateService;
+    private final GraphService graphService;
     private final UserService userService;
 
     public List<Transaction> findAllByUserId(Long id) {
@@ -29,7 +29,7 @@ public class TransactionService {
         Account senderAccount = accountService.getByUserIdAndCurrency(userId, fromCurrency);
         Account receiverAccount = accountService.getByUserIdAndCurrency(userId, toCurrency);
 
-        BigDecimal currencyValue = currencyRateService.getCurrencyValue(fromCurrency);
+        BigDecimal currencyValue = graphService.getCurrencyValue(fromCurrency);
         BigDecimal totalPrice = amount.multiply(currencyValue);
 
         processCurrencyTransaction(userId, senderAccount, receiverAccount, amount, totalPrice);
@@ -40,7 +40,7 @@ public class TransactionService {
         Account senderAccount = accountService.getByUserIdAndCurrency(userId, fromCurrency);
         Account receiverAccount = accountService.getByUserIdAndCurrency(userId, toCurrency);
 
-        BigDecimal currencyValue = currencyRateService.getCurrencyValue(toCurrency);
+        BigDecimal currencyValue = graphService.getCurrencyValue(toCurrency);
         BigDecimal totalPrice = amount.multiply(currencyValue);
 
         processCurrencyTransaction(userId, senderAccount, receiverAccount, totalPrice, amount);

@@ -9,7 +9,6 @@ import com.webcurrency.models.currency.CurrencyRate;
 import com.webcurrency.models.currency.CurrencyType;
 import com.webcurrency.models.account.Transaction;
 import com.webcurrency.models.user.User;
-import com.webcurrency.services.UserService;
 import org.modelmapper.ModelMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;

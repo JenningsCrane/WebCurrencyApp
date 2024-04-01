@@ -1,9 +1,6 @@
 package com.webcurrency.controllers;
 
-import com.webcurrency.exceptions.AccountNotFoundException;
-import com.webcurrency.exceptions.LowBalanceException;
-import com.webcurrency.exceptions.UnsupportedCurrencyType;
-import com.webcurrency.exceptions.UserNotCreatedException;
+import com.webcurrency.exceptions.*;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,13 +11,13 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 @ControllerAdvice
 @Tag(name = "Обработка ошибок")
 public class GlobalExceptionHandler {
-    @ExceptionHandler({UsernameNotFoundException.class, AccountNotFoundException.class})
-    private ResponseEntity<HttpStatus> handleException(UsernameNotFoundException e) {
+    @ExceptionHandler({UsernameNotFoundException.class, AccountNotFoundException.class, CurrencyValueNotFoundException.class})
+    private ResponseEntity<HttpStatus> handleException() {
         return new ResponseEntity<>(HttpStatus.NOT_FOUND); // 404
     }
 
     @ExceptionHandler({UserNotCreatedException.class, UnsupportedCurrencyType.class})
-    private ResponseEntity<HttpStatus> handleException() {
+    private ResponseEntity<HttpStatus> handleUnsupportedDataException() {
         return new ResponseEntity<>(HttpStatus.UNPROCESSABLE_ENTITY); // 422
     }
 
@@ -28,4 +25,5 @@ public class GlobalExceptionHandler {
     public ResponseEntity<HttpStatus> handleLowBalanceException() {
         return new ResponseEntity<>(HttpStatus.CONFLICT); // 409
     }
+
 }

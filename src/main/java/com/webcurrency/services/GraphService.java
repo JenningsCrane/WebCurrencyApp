@@ -6,6 +6,7 @@ import com.webcurrency.models.currency.CurrencyType;
 import com.webcurrency.utils.XmlParser;
 import com.webcurrency.repositories.CurrencyRateRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
@@ -16,7 +17,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class CurrencyRateService {
+public class GraphService {
     private final XmlParser xmlParser;
     private final CurrencyRateRepository currencyRateRepository;
 
@@ -24,6 +25,7 @@ public class CurrencyRateService {
         return getLatestCurrencyRateByType(currencyType).getValue();
     }
 
+    @Cacheable(value = "listCurrencyRate")
     public List<CurrencyRate> updateCurrencyRatesIfNeeded(String date1, String date2, CurrencyType currencyType) {
         try {
             String url;

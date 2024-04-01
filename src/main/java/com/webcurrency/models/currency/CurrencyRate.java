@@ -12,7 +12,7 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "currency_rates")
+@Table(name = "currency_rates", indexes = {@Index(name = "idx_currency", columnList = "currency")})
 public class CurrencyRate {
 
     @Id

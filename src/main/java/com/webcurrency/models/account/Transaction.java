@@ -13,7 +13,7 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "transactions")
+@Table(name = "transactions", indexes = {@Index(name = "idx_user", columnList = "user_id")})
 public class Transaction {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
