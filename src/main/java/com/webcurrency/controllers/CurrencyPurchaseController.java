@@ -2,7 +2,6 @@ package com.webcurrency.controllers;
 
 import com.webcurrency.models.currency.CurrencyType;
 import com.webcurrency.services.TransactionService;
-import com.webcurrency.utils.Converter;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
@@ -14,7 +13,7 @@ import java.math.BigDecimal;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/transactions")
+@RequestMapping("/currencies")
 @RequiredArgsConstructor
 @Tag(name = "Покупка и продажа валюты")
 public class CurrencyPurchaseController {
