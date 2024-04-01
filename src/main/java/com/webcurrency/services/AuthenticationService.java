@@ -5,6 +5,7 @@ import com.webcurrency.dto.SignInRequest;
 import com.webcurrency.dto.SignUpRequest;
 import com.webcurrency.models.user.Role;
 import com.webcurrency.models.user.User;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -15,6 +16,8 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 public class AuthenticationService {
+    public static final String BEARER_PREFIX = "Bearer ";
+    public static final String HEADER_NAME = "Authorization";
     private final UserService userService;
     private final JwtService jwtService;
     private final PasswordEncoder passwordEncoder;
@@ -48,5 +51,11 @@ public class AuthenticationService {
 
         var jwt = jwtService.generateToken(user);
         return new JwtAuthenticationResponse(jwt);
+    }
+
+    public Long getUserId(HttpServletRequest request) {
+        var authHeader = request.getHeader(HEADER_NAME);
+        var jwt = authHeader.substring(BEARER_PREFIX.length());
+        return jwtService.extractUserId(jwt);
     }
 }
