@@ -35,7 +35,7 @@ public class AuthenticationService {
 
         userService.create(user);
 
-        var jwt = jwtService.generateToken(user);
+        String jwt = jwtService.generateToken(user);
         return new JwtAuthenticationResponse(jwt);
     }
 
@@ -49,13 +49,13 @@ public class AuthenticationService {
                 .userDetailsService()
                 .loadUserByUsername(request.getUsername());
 
-        var jwt = jwtService.generateToken(user);
+        String jwt = jwtService.generateToken(user);
         return new JwtAuthenticationResponse(jwt);
     }
 
     public Long getUserId(HttpServletRequest request) {
-        var authHeader = request.getHeader(HEADER_NAME);
-        var jwt = authHeader.substring(BEARER_PREFIX.length());
+        String authHeader = request.getHeader(HEADER_NAME);
+        String jwt = authHeader.substring(BEARER_PREFIX.length());
         return jwtService.extractUserId(jwt);
     }
 }
