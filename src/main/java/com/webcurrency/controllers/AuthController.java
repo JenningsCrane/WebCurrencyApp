@@ -12,12 +12,15 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.lang.NonNull;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.UUID;
+
 @RestController
 @RequestMapping("/auth")
 @RequiredArgsConstructor
 @Tag(name = "Аутентификация")
 public class AuthController {
     private final AuthenticationService authenticationService;
+
     @Operation(summary = "Регистрация пользователя")
     @PostMapping("/sign-up")
     public JwtAuthenticationResponse signUp(@RequestBody @Valid SignUpRequest request) {
@@ -32,7 +35,7 @@ public class AuthController {
 
     @Operation(summary = "Получение id пользователя")
     @GetMapping("/me")
-    private Long getUserIdFromResponse(@NonNull HttpServletRequest request) {
+    private UUID getUserIdFromResponse(@NonNull HttpServletRequest request) {
         return authenticationService.getUserId(request);
     }
 }

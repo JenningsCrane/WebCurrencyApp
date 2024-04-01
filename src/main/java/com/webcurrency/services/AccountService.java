@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
@@ -22,7 +23,7 @@ public class AccountService {
         return accountRepository.save(account);
     }
 
-    public List<Account> getByUserId(Long userId) {
+    public List<Account> getByUserId(UUID userId) {
         return accountRepository.findAccountByUserId(userId);
     }
 
@@ -52,7 +53,7 @@ public class AccountService {
         accountRepository.save(account);
     }
 
-    public Account getByUserIdAndCurrency(Long userId, CurrencyType fromCurrency) {
+    public Account getByUserIdAndCurrency(UUID userId, CurrencyType fromCurrency) {
         return accountRepository.findByUserAndCurrencyType(userService.getById(userId), fromCurrency)
                 .orElseThrow(() -> new AccountNotFoundException("Счет не найден"));
     }

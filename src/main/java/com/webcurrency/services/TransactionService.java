@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
@@ -20,12 +21,12 @@ public class TransactionService {
     private final GraphService graphService;
     private final UserService userService;
 
-    public List<Transaction> findAllByUserId(Long id) {
+    public List<Transaction> findAllByUserId(UUID id) {
         return transactionRepository.findAllByUser(userService.getById(id));
     }
 
     @Transactional
-    public void sellCurrency(Long userId, CurrencyType fromCurrency, CurrencyType toCurrency, BigDecimal amount) {
+    public void sellCurrency(UUID userId, CurrencyType fromCurrency, CurrencyType toCurrency, BigDecimal amount) {
         Account senderAccount = accountService.getByUserIdAndCurrency(userId, fromCurrency);
         Account receiverAccount = accountService.getByUserIdAndCurrency(userId, toCurrency);
 
@@ -36,7 +37,7 @@ public class TransactionService {
     }
 
     @Transactional
-    public void buyCurrency(Long userId, CurrencyType fromCurrency, CurrencyType toCurrency, BigDecimal amount) {
+    public void buyCurrency(UUID userId, CurrencyType fromCurrency, CurrencyType toCurrency, BigDecimal amount) {
         Account senderAccount = accountService.getByUserIdAndCurrency(userId, fromCurrency);
         Account receiverAccount = accountService.getByUserIdAndCurrency(userId, toCurrency);
 
@@ -46,7 +47,7 @@ public class TransactionService {
         processCurrencyTransaction(userId, senderAccount, receiverAccount, totalPrice, amount);
     }
 
-    private void processCurrencyTransaction(Long userId, Account senderAccount, Account receiverAccount,
+    private void processCurrencyTransaction(UUID userId, Account senderAccount, Account receiverAccount,
                                             BigDecimal debitAmount, BigDecimal creditAmount) {
         accountService.decreaseBalance(senderAccount.getId(), debitAmount);
         accountService.increaseBalance(receiverAccount.getId(), creditAmount);

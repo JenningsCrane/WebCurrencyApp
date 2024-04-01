@@ -14,6 +14,7 @@ import com.webcurrency.models.user.User;
 import com.webcurrency.repositories.UserRepository;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
@@ -65,7 +66,7 @@ public class UserService {
         save(user);
     }
 
-    public User getById(Long id) {
+    public User getById(UUID id) {
         return repository.findById(id)
                 .orElseThrow(() -> new UsernameNotFoundException("Пользователь не найден"));
     }

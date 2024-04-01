@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 
 @ControllerAdvice
 @Tag(name = "Обработка ошибок")
-public class GlobalExceptionHandler {
+public class GlobalExceptionController {
     @ExceptionHandler({UsernameNotFoundException.class, AccountNotFoundException.class, CurrencyValueNotFoundException.class})
     private ResponseEntity<HttpStatus> handleException() {
         return new ResponseEntity<>(HttpStatus.NOT_FOUND); // 404

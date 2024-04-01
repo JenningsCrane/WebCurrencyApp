@@ -13,6 +13,8 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.UUID;
+
 @Service
 @RequiredArgsConstructor
 public class AuthenticationService {
@@ -53,9 +55,9 @@ public class AuthenticationService {
         return new JwtAuthenticationResponse(jwt);
     }
 
-    public Long getUserId(HttpServletRequest request) {
+    public UUID getUserId(HttpServletRequest request) {
         String authHeader = request.getHeader(HEADER_NAME);
         String jwt = authHeader.substring(BEARER_PREFIX.length());
-        return jwtService.extractUserId(jwt);
+        return UUID.fromString(jwtService.extractUserId(jwt));
     }
 }

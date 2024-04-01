@@ -8,6 +8,8 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.UUID;
+
 @RestController
 @RequestMapping("profile")
 @RequiredArgsConstructor
@@ -18,7 +20,7 @@ public class ProfileController {
 
     @GetMapping("/{id}")
     @Operation(summary = "Получение данных пользователя")
-    public UserResponse getUserData(@PathVariable("id") Long id) {
+    public UserResponse getUserData(@PathVariable("id") UUID id) {
         return converter.convertToUserResponse(userService.getById(id));
     }
 }
