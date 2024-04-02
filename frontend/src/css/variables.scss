@@ -1,0 +1,83 @@
+.input-outline {
+    background: none;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 0.5rem;
+    outline: none;
+    height: 3rem;
+    padding: 1rem;
+    font-size: 0.9rem;
+    color: #9597a1;
+}
+
+.input-custom {
+    background: #1a1c24;
+    border-radius: 0.5rem;
+    outline: none;
+    height: 3rem;
+    padding: 1rem;
+    font-size: 0.9rem;
+    color: #9597a1;
+}
+
+.input-file {
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 0.5rem;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 18rem;
+    height: 15rem;
+    position: relative;
+    cursor: pointer;
+    svg {
+        height: 5rem;
+        position: absolute;
+    }
+    input {
+        visibility: hidden;
+    }
+}
+
+.textarea-outline {
+    background: none;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 0.5rem;
+    outline: none;
+    padding: 1rem;
+    font-size: 0.9rem;
+    color: #9597a1;
+}
+
+.light-button {
+    background: white;
+    color: black;
+    border-radius: 0.5rem;
+    padding: 0.5rem 1.5rem 0.5rem 1.5rem;
+    font-weight: 700;
+    font-size: 0.9rem;
+}
+
+.save-button {
+    width: 100%;
+    background: rgba(50, 57, 77, 1) !important;
+    border-radius: 0.5rem;
+    height: 3.5rem;
+    font-weight: 600;
+}
+
+.w-95 {
+    width: 95%;
+}
+
+.w-700 {
+    width: 700px;
+}
+
+.w-420 {
+    width: 420px;
+}
+
+.w-550 {
+    width: 550px;
+}

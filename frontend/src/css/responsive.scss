@@ -1,0 +1,22 @@
+@media screen and (max-width: 500px) {
+    .sidebar {
+        width: 100% !important;
+        position: absolute !important;
+        top: 0 !important;
+        z-index: 999;
+    }
+    .content-view {
+        margin: 0px 0.5rem !important;
+    }
+    .navbar {
+        padding: 0 0.5rem 0 0.5rem !important;
+    }
+    .pagination {
+        right: 0 !important;
+        display: none;
+    }
+    .login {
+        width: 95%;
+        margin: 0 auto !important;
+    }
+}
