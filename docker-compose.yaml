@@ -7,7 +7,7 @@ services:
     networks:
       local_network:
     ports:
-      - "8090:8090"
+      - "8080:8080"
     environment:
       - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres:5432/webcurrencydb?autoReconnect=true
       - SPRING_DATASOURCE_USERNAME=admin
