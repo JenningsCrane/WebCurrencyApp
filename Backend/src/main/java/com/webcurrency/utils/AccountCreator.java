@@ -12,9 +12,9 @@ public class AccountCreator {
     public static List<Account> createAccountsForNewUser(User user) {
         List<Account> accounts = new ArrayList<>();
 
-        accounts.add(createAccount(user, CurrencyType.RUB, new BigDecimal("5000")));
-        accounts.add(createAccount(user, CurrencyType.AED, BigDecimal.ZERO));
-        accounts.add(createAccount(user, CurrencyType.CNY, BigDecimal.ZERO));
+        accounts.add(createAccount(user, CurrencyType.RUB, new BigDecimal("100000")));
+        accounts.add(createAccount(user, CurrencyType.AED, new BigDecimal("5000")));
+        accounts.add(createAccount(user, CurrencyType.CNY, new BigDecimal("5000")));
 
         return accounts;
     }
