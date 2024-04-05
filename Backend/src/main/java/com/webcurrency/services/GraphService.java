@@ -71,7 +71,11 @@ public class GraphService {
     }
 
     public CurrencyRate getLatestCurrencyRateByType(CurrencyType currencyType) {
-        return currencyRateRepository.findLatestByCurrency(currencyType)
-                .orElseThrow(() -> new CurrencyValueNotFoundException("В ЦБ нет релевантных данных по курсу данной валюты"));
+        List<CurrencyRate> currencyRates = currencyRateRepository.findLatestByCurrency(currencyType);
+        if (currencyRates.isEmpty()) {
+            throw new CurrencyValueNotFoundException("В ЦБ нет релевантных данных по курсу данной валюты");
+        } else {
+            return currencyRates.get(0);
+        }
     }
 }
