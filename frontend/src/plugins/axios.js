@@ -8,12 +8,12 @@ axios.interceptors.request.use(function(config) {
 }, function(err) {
     return Promise.reject(err)
 })
-const token = JSON.parse(localStorage.getItem('admin_token'))
+const token = JSON.parse(localStorage.getItem('token'))
 if (token) {
     axios.defaults.headers.common["Authorization"] = `Bearer ${token}`
 }
 const axiosInstance = axios.create({
-    baseURL: 'http://localhost:8090/'
+    baseURL: 'http://37.228.117.58:8090/'
 });
 
 

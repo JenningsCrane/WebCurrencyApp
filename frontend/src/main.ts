@@ -16,7 +16,8 @@ import mobileMixin from './consts/mobileMixin';
 import { icons } from './consts/Icons';
 import router from './router';
 import axiosInstance from './plugins/axios'
-
+import ToastPlugin from 'vue-toast-notification';
+import 'vue-toast-notification/dist/theme-bootstrap.css';
 
 import App from './App.vue';
 import Sidebar from '@/components/Layout/Sidebar.vue';
@@ -58,6 +59,7 @@ app
   .use(VueAwesomePaginate)
   .provide('axios', axiosInstance)
   .use(setupCalendar)
+  .use(ToastPlugin)
   .component('VCalendar', Calendar)
   .component('VDatePicker', DatePicker)
   .use(router)

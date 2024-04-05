@@ -3,10 +3,11 @@
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 0.5rem;
     outline: none;
-    height: 3rem;
-    padding: 1rem;
+    padding: 0.5rem;
+    height: 3.2rem;
     font-size: 0.9rem;
     color: #9597a1;
+    width: 100%;
 }
 
 .input-custom {
@@ -60,10 +61,11 @@
 
 .save-button {
     width: 100%;
-    background: rgba(50, 57, 77, 1) !important;
     border-radius: 0.5rem;
-    height: 3.5rem;
+    height: 3rem;
+    padding: 0 2rem;
     font-weight: 600;
+    cursor: pointer;
 }
 
 .w-95 {

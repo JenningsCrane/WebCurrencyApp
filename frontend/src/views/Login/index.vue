@@ -133,11 +133,22 @@ export default {
             localStorage.setItem("token", JSON.stringify(response.data?.token));
             const token = JSON.parse(localStorage.getItem("token"));
             if (token) {
-              this.$router.push("/history");
+              this.$toast.open({
+                message: "Успешно  авторизирован!",
+                type: "success",
+                position: "top-right",
+              });
+              this.$router.push("/profile");
             }
           }
         })
-        .catch((error) => {});
+        .catch((error) => {
+          this.$toast.open({
+            message: "Что-то пошло не так",
+            type: "error",
+            position: "top-right",
+          });
+        });
     },
     userLogin() {
       this.axios
@@ -149,11 +160,22 @@ export default {
             localStorage.setItem("token", JSON.stringify(response.data?.token));
             const token = JSON.parse(localStorage.getItem("token"));
             if (token) {
-              this.$router.push("/history");
+              this.$toast.open({
+                message: "Успешно  авторизирован!",
+                type: "success",
+                position: "top-right",
+              });
+              this.$router.push("/profile");
             }
           }
         })
-        .catch((error) => {});
+        .catch((error) => {
+          this.$toast.open({
+            message: "Что-то пошло не так",
+            type: "error",
+            position: "top-right",
+          });
+        });
     },
   },
 };

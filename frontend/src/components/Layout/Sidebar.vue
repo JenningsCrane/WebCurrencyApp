@@ -6,7 +6,7 @@
     <div
       class="sidebar__logo text-3xl font-semibold text-left h-20 border-b border-gray-300 px-4 flex items-center justify-between"
     >
-      <h1>Logo</h1>
+      <h1>Web Currency</h1>
       <font-awesome-icon
         @click="toggleSidebar"
         v-if="mobile"

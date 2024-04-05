@@ -3134,6 +3134,11 @@ vue-screen-utils@^1.0.0-beta.13:
   resolved "https://registry.npmjs.org/vue-screen-utils/-/vue-screen-utils-1.0.0-beta.13.tgz"
   integrity sha512-EJ/8TANKhFj+LefDuOvZykwMr3rrLFPLNb++lNBqPOpVigT2ActRg6icH9RFQVm4nHwlHIHSGm5OY/Clar9yIg==
 
+vue-toast-notification@^3.1.2:
+  version "3.1.2"
+  resolved "https://registry.npmjs.org/vue-toast-notification/-/vue-toast-notification-3.1.2.tgz"
+  integrity sha512-oNRL/W9aaHoeScp+iTIW7k09vM16/+8aptp2maa+7qTB43JuxmAgKdXKFYtf+uvSNOYYq2BIWgLCeJ61pwom/A==
+
 vue-upload-component@next:
   version "3.1.15"
   resolved "https://registry.npmjs.org/vue-upload-component/-/vue-upload-component-3.1.15.tgz"
@@ -3156,7 +3161,7 @@ vue@^2.5.13:
     "@vue/compiler-sfc" "2.7.16"
     csstype "^3.1.0"
 
-"vue@^2.6.14 || ^3.3.0", vue@^3.0.0, "vue@^3.0.0-0 || ^2.6.0", "vue@^3.0.0-0 || ^2.7.0", vue@^3.2.0, vue@^3.2.25, vue@^3.2.41, vue@^3.3.8, "vue@>= 3.0.0 < 4", vue@>=3.2.13, vue@3.4.21:
+"vue@^2.6.14 || ^3.3.0", vue@^3.0, vue@^3.0.0, "vue@^3.0.0-0 || ^2.6.0", "vue@^3.0.0-0 || ^2.7.0", vue@^3.2.0, vue@^3.2.25, vue@^3.2.41, vue@^3.3.8, "vue@>= 3.0.0 < 4", vue@>=3.2.13, vue@3.4.21:
   version "3.4.21"
   resolved "https://registry.npmjs.org/vue/-/vue-3.4.21.tgz"
   integrity sha512-5hjyV/jLEIKD/jYl4cavMcnzKwjMKohureP8ejn3hhEjwhWIhWeuzL2kJAjzl/WyVsgPY56Sy4Z40C3lVshxXA==

@@ -1,65 +1,82 @@
 <template>
   <div class="profile mt-3 mobile:flex mobile:flex-col mobile:items-center">
-    <div>
-      <div @click="selectFiles">
-        <input
-          ref="fileInput"
-          required
-          type="file"
-          @change="previewImage"
-          accept="image/*"
-          class="form-control-file hidden"
-          id="my-file"
-        />
+    <div
+      v-if="userInfo"
+      class="profile__form mt-2 w-2/5 flex flex-col gap-5 mobile:w-11/12"
+    >
+      <font-awesome-icon
+        icon="user"
+        class="cursor-pointer mb-12 h-36 w-36 mx-auto"
+      />
+      <input
+        readonly
+        v-model="userInfo.username"
+        type="text"
+        class="input-custom"
+      />
+      <input
+        readonly
+        v-model="userInfo.email"
+        type="email"
+        class="input-custom"
+      />
+      <input
+        readonly
+        v-model="userInfo.phoneNumber"
+        type="number"
+        class="input-custom"
+      />
+      <div class="flex justify-between gap-3">
+        <div
+          class="w-1/3 bg-dark-gray flex flex-col rounded-lg pt-6 pb-6 items-center justify-center gap-2"
+          v-for="account in userInfo.accounts"
+          :key="account"
+        >
+          <span class="text-sm font-light">
+            {{ account.currency }}
+          </span>
+          <p class="text-2xl font-bold">{{ account.balance }}</p>
+        </div>
       </div>
-    </div>
-    <div class="profile__form mt-8 w-2/5 flex flex-col gap-5 mobile:w-11/12">
-      <input v-model="userInfo.firstname" type="text" class="input-custom" />
-      <input v-model="userInfo.lastname" type="text" class="input-custom" />
-      <input v-model="userInfo.email" type="email" class="input-custom" />
-      <VDatePicker
-        v-model="userInfo.dateBirth"
-        :popover="popover"
-        :is-dark="true"
-      >
-        <template #default="{ inputValue, inputEvents }">
-          <input
-            required
-            :value="inputValue"
-            v-on="inputEvents"
-            class="input-custom"
-          />
-        </template>
-      </VDatePicker>
-      <button class="light-button h-12">Сохранить</button>
     </div>
   </div>
 </template>
 
-<script setup lang="ts">
-import { ref } from "vue";
-
-const userInfo = ref({
-  firstname: "Brendan",
-  lastname: "Schut",
-  email: "brendanschut@gmai.com",
-  dateBirth: new Date(),
-});
-const preview = ref(null);
-const image = ref(null);
-const fileInput = ref(null);
-const selectFiles = () => {
-  fileInput.value.click();
-};
-const previewImage = (event) => {
-  const input = event.target;
-  if (input.files) {
-    const reader = new FileReader();
-    reader.onload = (e) => {
-      preview.value = e.target.result;
+<script>
+export default {
+  inject: ["axios"],
+  data() {
+    return {
+      userInfo: null,
     };
-    image.value = input.files[0];
-    reader.readAsDataURL(input.files[0]);
-  }
+  },
+  methods: {
+    getTransactions(id) {
+      this.axios
+        .get(`transactions/${id}`)
+        .then((response) => {})
+        .catch((error) => {});
+    },
+    getUserInfo(id) {
+      this.axios
+        .get(`profile/${id}`)
+        .then((response) => {
+          this.userInfo = response.data;
+        })
+        .catch((error) => {});
+    },
+    getUser() {
+      this.axios
+        .get("auth/me")
+        .then((response) => {
+          this.getTransactions(response.data);
+          this.getUserInfo(response.data);
+        })
+        .catch((error) => {});
+    },
+  },
+  mounted() {
+    this.getUser();
+  },
 };
 </script>

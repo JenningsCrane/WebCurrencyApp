@@ -28,10 +28,12 @@ import {
     faCircleXmark,
     faCartShopping,
     faClockRotateLeft,
-    faChartSimple
+    faChartSimple,
+    faYenSign
 } from '@fortawesome/free-solid-svg-icons';
 
 export const icons = {
+    faYenSign,
     faChartSimple,
     faClockRotateLeft,
     faCartShopping,
